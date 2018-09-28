@@ -1,6 +1,6 @@
 $(function () {
     var currentPage = 1;
-    var pageSize = 5;
+    var pageSize = 6;
     render();
     function render() {
         $.ajax({
@@ -26,6 +26,33 @@ $(function () {
                 })
 
             }
+        })
+        // 禁用功能
+        $('.lt_content tbody').on('click','.btn',function () {
+            $('#logoutModal').modal("show");
+            var id = $(this).parent().data('id');
+            var isDelete = $(this).hasClass('btn-success')? 1:0;
+            console.log(isDelete);
+            console.log(id);
+            
+            $('#submitBtn').off('click').on('click',function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/user/updateUser",
+                    data:{
+                        id:id,
+                        isDelete:isDelete
+                    },
+                    dataType: "json",
+                    success: function (info) {
+                        console.log(info);
+                        if(info.success){
+                            $('#logoutModal').modal('hide');
+                            render();
+                        }
+                    }
+                })
+            })
         })
     }
 })

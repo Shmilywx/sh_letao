@@ -22,7 +22,7 @@ $(function() {
         pageSize: pageSize
       },
       success: function( info ) {
-        console.log( info );
+        // console.log( info );
         // 参数2 必须是一个对象
         // 在模板中可以任意使用对象中的属性
         // isDelete 表示用户的启用状态, 1就是启用, 0就是禁用
