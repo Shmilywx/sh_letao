@@ -4,12 +4,20 @@ a:hover,
 a:active,
 a:focus{
   text-decoration: none !important;
-  color: #fff !important;
 }
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+a.active {
+    color: #fff;
+}
+.lt_content .mb_20 {
+    margin-bottom: 20px;
+}
+.lt_content .mb {
+    margin-bottom: 20px;
 }
 .table.table-bordered tr th,
 .table.table-bordered tr td {
