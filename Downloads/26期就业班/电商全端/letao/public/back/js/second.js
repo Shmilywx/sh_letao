@@ -112,7 +112,7 @@ $(function () {
                     $('#addModal').modal('hide');
                     currentPage = 1;
                     render();
-                    // 重置表单
+                    // 重置表单                  
                     $('#form').data("bootstrapValidator").resetForm(true);
                     $('#dropdownTxt').text("请选择一级分类");
                     $('#imgBox img').attr("src", "images/none.png");
@@ -122,3 +122,4 @@ $(function () {
     })
 
 })
+
