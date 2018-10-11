@@ -21,22 +21,33 @@ gallery.slider({
 });
 
 
-function getSearch( keywords ) {
-  var search = location.search;
+// 通用的解析地址栏参数的函数
+function getSearch( k ) {
+  // 获取地址栏参数
+  var search = location.search;   // "?key=2&name=%E9%B9%8F%E9%B9%8F&age=18"
 
-  // 解码成中文
-  search = decodeURI( search );
+  // 转码成中文
+  search = decodeURI( search );  // "?key=2&name=鹏鹏&age=18"
 
-  search = search.slice(1);
+  // slice(start, end); 从start开始截取, 截取到end结束
+  //       包含 start, 不包含end
+  //       如果不写 end, 截取到最后
+  // 去掉问号
+  search = search.slice(1);    // key=2&name=鹏鹏&age=18
 
-  var arr = search.split("&");
+  // 得到键值对字符串的数组
+  var arr = search.split("&");  // ["key=2", "name=鹏鹏", "age=18"]
 
   var obj = {};
-  arr.forEach(function( v, i ) {
-    var key = v.split("=")[0];
-    var value = v.split("=")[1];
+
+  // 遍历数组, 取出键和值, 存储到对象中去
+  arr.forEach(function( v, i ) {    // v 表示每一项   "age=18"
+    var key = v.split("=")[0]; // 键   age
+    var value =  v.split("=")[1]; // 值  18
+
+    // 点语法和中括号语法的区别在于, 中括号语法会解析变量
     obj[ key ] = value;
   })
 
-  return obj[ keywords ];
+  return obj[ k ];
 }
